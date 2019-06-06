@@ -341,7 +341,6 @@ mod unnamed {
     }
 
     // ==========================   Program Options   =================================
-    #[rustfmt::skip]
     static USAGE: &'static str = "
 Usage:
   ci_test -h

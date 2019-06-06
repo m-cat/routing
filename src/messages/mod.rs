@@ -30,7 +30,8 @@ use itertools::Itertools;
 use lru_time_cache::LruCache;
 use maidsafe_utilities::serialisation::{deserialise, serialise};
 use safe_crypto;
-use safe_crypto::{SecretSignKey, Signature};
+use safe_crypto::{PublicSignKey, SecretSignKey, Signature};
+use safe_nd::MAX_IMMUTABLE_DATA_SIZE_IN_BYTES;
 use std::collections::{BTreeMap, BTreeSet, HashSet};
 use std::fmt::{self, Debug, Formatter};
 use std::result::Result as StdResult;
@@ -906,7 +907,6 @@ impl UserMessageCache {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::data::ImmutableData;
     use crate::id::FullId;
     use crate::routing_table::{Authority, Prefix};
     use crate::types::MessageId;
@@ -914,7 +914,9 @@ mod tests {
     use maidsafe_utilities::serialisation::serialise;
     use rand;
     use safe_crypto;
-    use safe_crypto::SIGNATURE_BYTES;
+    use safe_crypto::{gen_sign_keypair, SIGNATURE_BYTES};
+    use safe_nd::ImmutableData;
+    use std::collections::BTreeSet;
     use std::iter;
 
     #[test]

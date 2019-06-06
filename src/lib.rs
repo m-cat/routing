@@ -121,9 +121,10 @@
     unused_features,
     unused_parens,
     while_true,
+
+    clippy::option_unwrap_used,
     clippy::unicode_not_nfc,
-    clippy::wrong_pub_self_convention,
-    clippy::option_unwrap_used
+    clippy::wrong_pub_self_convention
 )]
 #![warn(
     trivial_casts,
@@ -141,6 +142,7 @@
     missing_debug_implementations,
     variant_size_differences,
     non_camel_case_types,
+
     // FIXME: allow `needless_pass_by_value` until it's OK to change the public API
     // FIXME: Re-enable `redundant_field_names`.
     clippy::needless_pass_by_value,
@@ -236,9 +238,8 @@ pub use crate::client_error::{ClientError, EntryError};
 pub use crate::common_types::AccountPacket;
 pub use crate::config_handler::{Config, DevConfig};
 pub use crate::data::{
-    Action, EntryAction, EntryActions, ImmutableData, MutableData, PermissionSet, User, Value,
-    MAX_IMMUTABLE_DATA_SIZE_IN_BYTES, MAX_MUTABLE_DATA_ENTRIES, MAX_MUTABLE_DATA_SIZE_IN_BYTES,
-    NO_OWNER_PUB_KEY,
+    Action, EntryAction, EntryActions, MutableData, PermissionSet, User, Value,
+    MAX_MUTABLE_DATA_ENTRIES, MAX_MUTABLE_DATA_SIZE_IN_BYTES, NO_OWNER_PUB_KEY,
 };
 pub use crate::error::{InterfaceError, RoutingError};
 pub use crate::event::Event;

@@ -9,7 +9,7 @@
 use crate::action::Action;
 use crate::cache::NullCache;
 use crate::config_handler::{self, Config};
-use crate::data::{EntryAction, ImmutableData, MutableData, PermissionSet, User};
+use crate::data::{EntryAction, MutableData, PermissionSet, User};
 use crate::error::{InterfaceError, RoutingError};
 use crate::event::Event;
 #[cfg(feature = "mock_base")]
@@ -30,6 +30,7 @@ use maidsafe_utilities::thread::{self, Joiner};
 #[cfg(not(feature = "mock_base"))]
 use safe_crypto;
 use safe_crypto::PublicSignKey;
+use safe_nd::ImmutableData;
 use std::collections::{BTreeMap, BTreeSet};
 use std::sync::mpsc::{channel, Receiver, Sender};
 #[cfg(feature = "mock_base")]

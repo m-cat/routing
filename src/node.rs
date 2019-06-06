@@ -10,7 +10,7 @@ use crate::action::Action;
 use crate::cache::{Cache, NullCache};
 use crate::client_error::ClientError;
 use crate::config_handler::{self, Config};
-use crate::data::{EntryAction, ImmutableData, MutableData, PermissionSet, User, Value};
+use crate::data::{EntryAction, MutableData, PermissionSet, User, Value};
 use crate::error::{InterfaceError, RoutingError};
 use crate::event::Event;
 use crate::event_stream::{EventStepper, EventStream};
@@ -33,6 +33,7 @@ use crate::MIN_SECTION_SIZE;
 #[cfg(not(feature = "mock_base"))]
 use safe_crypto;
 use safe_crypto::PublicSignKey;
+use safe_nd::ImmutableData;
 use std::collections::{BTreeMap, BTreeSet};
 #[cfg(feature = "mock_base")]
 use std::fmt::{self, Display, Formatter};

@@ -7,9 +7,10 @@
 // permissions and limitations relating to use of the SAFE Network Software.
 
 use crate::client_error::ClientError;
-use crate::data::{ImmutableData, MutableData, PermissionSet, User, Value};
+use crate::data::{MutableData, PermissionSet, User, Value};
 use crate::types::MessageId as MsgId;
 use safe_crypto::PublicSignKey;
+use safe_nd::ImmutableData;
 use std::collections::{BTreeMap, BTreeSet};
 
 /// Response message types

@@ -92,7 +92,6 @@ mod unnamed {
     use std::time::Duration;
 
     // ==========================   Program Options   =================================
-    #[rustfmt::skip]
     static USAGE: &str = "
 Usage:
   key_value_store

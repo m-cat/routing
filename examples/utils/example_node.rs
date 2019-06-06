@@ -9,9 +9,10 @@
 use lru_time_cache::LruCache;
 use maidsafe_utilities::serialisation::{deserialise, serialise};
 use routing::{
-    Authority, ClientError, Event, EventStream, ImmutableData, MessageId, MutableData, Node,
-    Prefix, Request, Response, XorName,
+    Authority, ClientError, Event, EventStream, MessageId, MutableData, Node, Prefix, Request,
+    Response, XorName,
 };
+use safe_nd::ImmutableData;
 use std::collections::HashMap;
 use std::fs::File;
 use std::io::Write;
@@ -215,7 +216,7 @@ impl ExampleNode {
                     data.name(),
                     data
                 );
-                let _ = self.idata_store.insert(*data.name(), data);
+                let _ = self.idata_store.insert(XorName(*data.name()), data);
                 let _ = self.node.send_put_idata_response(dst, src, Ok(()), msg_id);
             }
             Authority::ClientManager(_) => {
@@ -227,7 +228,7 @@ impl ExampleNode {
                 );
                 if self.request_cache.insert(msg_id, (dst, src)).is_none() {
                     let src = dst;
-                    let dst = Authority::NaeManager(*data.name());
+                    let dst = Authority::NaeManager(XorName(*data.name()));
                     unwrap!(self.node.send_put_idata_request(src, dst, data, msg_id));
                 } else {
                     warn!("Attempt to reuse message ID {:?}.", msg_id);
@@ -384,7 +385,7 @@ impl ExampleNode {
         for data in self.idata_store.values() {
             let refresh_content = RefreshContent::ImmutableData(data.clone());
             let content = unwrap!(serialise(&refresh_content));
-            let auth = Authority::NaeManager(*data.name());
+            let auth = Authority::NaeManager(XorName(*data.name()));
             unwrap!(self.node.send_refresh_request(auth, auth, content, msg_id));
         }
 
@@ -414,7 +415,7 @@ impl ExampleNode {
                     self.get_debug_name(),
                     data.name()
                 );
-                let _ = self.idata_store.insert(*data.name(), data);
+                let _ = self.idata_store.insert(XorName(*data.name()), data);
             }
             RefreshContent::MutableData(data) => {
                 trace!(
