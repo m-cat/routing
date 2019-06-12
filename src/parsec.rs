@@ -184,6 +184,8 @@ fn create(full_id: FullId, gen_pfx_info: &GenesisPfxInfo) -> Parsec {
             *gen_pfx_info.first_info.hash(),
             full_id,
             &gen_pfx_info.first_info.members(),
+            // TODO: fix this
+            // vec![],
             ConsensusMode::Single,
         )
     } else {

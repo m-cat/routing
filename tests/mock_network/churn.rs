@@ -15,9 +15,10 @@ use itertools::Itertools;
 use rand::Rng;
 use routing::mock_crust::Network;
 use routing::{
-    Authority, BootstrapConfig, Event, EventStream, ImmutableData, MessageId, PublicId, Request,
-    Response, XorName, XorTargetInterval, QUORUM_DENOMINATOR, QUORUM_NUMERATOR,
+    Authority, BootstrapConfig, Event, EventStream, MessageId, PublicId, Request, Response,
+    XorName, XorTargetInterval, QUORUM_DENOMINATOR, QUORUM_NUMERATOR,
 };
+use safe_nd::ImmutableData;
 use std::cmp;
 use std::collections::{BTreeMap, BTreeSet, HashMap, HashSet};
 

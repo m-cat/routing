@@ -11,9 +11,10 @@ use super::{
 };
 use routing::mock_crust::Network;
 use routing::{
-    Authority, ClientError, Event, EventStream, ImmutableData, MessageId, Request, Response,
-    QUORUM_DENOMINATOR, QUORUM_NUMERATOR,
+    Authority, ClientError, Event, EventStream, MessageId, Request, Response, QUORUM_DENOMINATOR,
+    QUORUM_NUMERATOR,
 };
+use safe_nd::ImmutableData;
 
 #[test]
 fn successful_put_request() {

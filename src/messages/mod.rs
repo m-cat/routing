@@ -14,7 +14,6 @@ pub use self::response::{AccountInfo, Response};
 use super::{QUORUM_DENOMINATOR, QUORUM_NUMERATOR};
 use crate::ack_manager::Ack;
 use crate::chain::{GenesisPfxInfo, Proof, ProofSet, ProvingSection, SectionInfo};
-use crate::data::MAX_IMMUTABLE_DATA_SIZE_IN_BYTES;
 use crate::error::{BootstrapResponseError, Result, RoutingError};
 use crate::event::Event;
 use crate::id::{FullId, PublicId};

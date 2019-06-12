@@ -15,10 +15,8 @@ use maidsafe_utilities::SeededRng;
 use rand::Rng;
 use routing::mock_crust::Network;
 use routing::rate_limiter_consts::SOFT_CAPACITY;
-use routing::{
-    Authority, BootstrapConfig, Event, EventStream, FullId, ImmutableData, MessageId, Request,
-    MAX_IMMUTABLE_DATA_SIZE_IN_BYTES,
-};
+use routing::{Authority, BootstrapConfig, Event, EventStream, FullId, MessageId, Request};
+use safe_nd::{ImmutableData, XorName, MAX_IMMUTABLE_DATA_SIZE_IN_BYTES};
 use std::time::Duration;
 
 /// Connect a client to the network then send an invalid message.
@@ -143,7 +141,7 @@ fn resend_parts_on_exceeding_limit() {
 
     for data in data_vec {
         let msg_id = MessageId::new();
-        let dst = Authority::NaeManager(*data.name());
+        let dst = Authority::NaeManager(XorName(*data.name()));
         unwrap!(clients[0].inner.put_idata(dst, data, msg_id));
     }
     poll_and_resend(&mut nodes, &mut clients);
@@ -197,7 +195,7 @@ fn resend_over_load() {
 
     for data in data_vec {
         let msg_id = MessageId::new();
-        let dst = Authority::NaeManager(*data.name());
+        let dst = Authority::NaeManager(XorName(*data.name()));
         unwrap!(clients[0].inner.put_idata(dst, data, msg_id));
     }
     poll_and_resend(&mut nodes, &mut clients);

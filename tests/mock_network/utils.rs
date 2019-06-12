@@ -13,10 +13,10 @@ use routing::mock_crust::{self, Endpoint, Network, ServiceHandle};
 use routing::test_consts::CONNECTING_PEER_TIMEOUT_SECS;
 use routing::{verify_chain_invariant, Chain};
 use routing::{
-    Authority, BootstrapConfig, Cache, Client, Config, DevConfig, Event, EventStream, FullId,
-    ImmutableData, Node, NullCache, Prefix, PublicId, Request, Response, XorName,
-    XorTargetInterval, Xorable,
+    Authority, BootstrapConfig, Cache, Client, Config, DevConfig, Event, EventStream, FullId, Node,
+    NullCache, Prefix, PublicId, Request, Response, XorName, XorTargetInterval, Xorable,
 };
+use safe_nd::ImmutableData;
 use std::cell::RefCell;
 use std::cmp;
 use std::collections::{BTreeSet, HashMap};

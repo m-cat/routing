@@ -66,7 +66,10 @@ where
         };
 
         parsec
-            .vote_for(Observation::Genesis(genesis_group.clone()))
+            .vote_for(Observation::Genesis {
+                group: genesis_group.clone(),
+                related_info: vec![],
+            })
             .unwrap();
         parsec
     }

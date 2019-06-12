@@ -133,7 +133,7 @@ pub trait Approved: Relocated {
                     // FIXME: Handle properly
                     unreachable!("...")
                 }
-                Observation::Genesis(_) => {
+                Observation::Genesis { .. } => {
                     // FIXME: Validate with Chain info.
                     self.set_pfx_successfully_polled(true);
                     continue;

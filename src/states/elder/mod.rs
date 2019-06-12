@@ -436,7 +436,7 @@ impl Elder {
                 parsec::Observation::Remove { peer_id, .. } => NetworkEvent::Offline(peer_id),
                 parsec::Observation::OpaquePayload(event) => event.clone(),
 
-                parsec::Observation::Genesis(_)
+                parsec::Observation::Genesis { .. }
                 | parsec::Observation::Add { .. }
                 | parsec::Observation::Accusation { .. } => continue,
             };

@@ -279,7 +279,6 @@ impl RateLimiter {
 #[cfg(all(test, feature = "mock_base"))]
 mod tests {
     use super::*;
-    use crate::data::ImmutableData;
     use crate::messages::{MessageContent, Request, Response};
     use crate::types::MessageId;
     use crate::xor_name::{XorName, XOR_NAME_LEN};
@@ -287,6 +286,7 @@ mod tests {
     use maidsafe_utilities::SeededRng;
     use rand::Rng;
     use safe_crypto;
+    use safe_nd::ImmutableData;
     use std::collections::BTreeMap;
 
     fn huge_message_can_be_added(rate_limiter: &mut RateLimiter, client: &IpAddr) -> bool {
